@@ -33,6 +33,8 @@ def main():
                             type=float, default=-1)
         parser.add_argument("--b", help="blue color",
                             type=float, default=-1)
+        parser.add_argument(
+            "--size", help="size of the image", type=int, default=2048)
         args = parser.parse_args()
 
         filepath = args.filepath
@@ -48,6 +50,7 @@ def main():
         color_r = args.r
         color_g = args.g
         color_b = args.b
+        size = args.size
 
         capture(
             filepath,
@@ -63,6 +66,7 @@ def main():
             color_r,
             color_g,
             color_b,
+            size
         )
     else:
         print("No file path given")
@@ -82,6 +86,7 @@ def capture(
     color_r=-1,
     color_g=-1,
     color_b=-1,
+    size=2048
 ):
     reset()
 
@@ -127,7 +132,7 @@ def capture(
         location=(distance * 3, 0, 0), rotation=(math.pi*0.5, 0, math.pi*0.5))
     bpy.context.scene.camera = bpy.data.objects['Camera']
 
-    render(out=filepath.replace('.svg', '.png'))
+    render(filepath.replace('.svg', '.png'), size)
 
     return
 
@@ -142,10 +147,10 @@ def log(any):
             print("func:", key)
 
 
-def render(out=os.path.join(os.getcwd(), 'out.png')):
+def render(out=os.path.join(os.getcwd(), 'out.png'), size=2048):
     bpy.context.scene.render.filepath = out
-    bpy.context.scene.render.resolution_x = 2048
-    bpy.context.scene.render.resolution_y = 2048
+    bpy.context.scene.render.resolution_x = size
+    bpy.context.scene.render.resolution_y = size
     bpy.context.scene.render.film_transparent = True
     bpy.ops.render.render(write_still=True)
 
