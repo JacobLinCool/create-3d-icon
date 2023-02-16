@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "blender-3d-icon"
+version = "0.0.0"
+description = ""
+authors = ["JacobLinCool <jacoblincool@gmail.com>"]
+readme = "README.md"
+packages = [{include = "blender_3d_icon"}]
+
+[tool.poetry.dependencies]
+python = "~3.10"
+bpy = "^3.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
