@@ -93,7 +93,7 @@ def capture(
     bpy.ops.import_curve.svg(filepath=filepath)
 
     collection = bpy.data.collections[os.path.basename(filepath)]
-    x, y, z = collection_dimensions(collection)
+    x, y, z, min_x, min_y, min_z = collection_dimensions(collection)
 
     for obj in collection.objects:
         obj.select_set(True)
@@ -104,7 +104,7 @@ def capture(
 
     # move the objects
     bpy.ops.transform.translate(
-        value=(0, -0.5 * (factor * x), -0.5 * (factor * y)))
+        value=(0, factor * (-0.5 * x - min_x), factor * (-0.5 * y - min_y)))
 
     # rotate the objects
     bpy.ops.transform.rotate(value=math.pi * -0.5 +
@@ -169,7 +169,7 @@ def collection_dimensions(collection):
 
     x, y, z = max_x - min_x, max_y - min_y, max_z - min_z
 
-    return x, y, z
+    return x, y, z, min_x, min_y, min_z
 
 
 def deg_to_rad(deg):
