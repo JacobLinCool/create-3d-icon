@@ -6,31 +6,37 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("filepath", help="path to svg file")
-parser.add_argument("--rx", help="rotate x axis",
+parser.add_argument("-rx", "--rotate-x", help="rotate x axis",
                     type=float, default=0)
-parser.add_argument("--ry", help="rotate y axis",
+parser.add_argument("-ry", "--rotate-y", help="rotate y axis",
                     type=float, default=0)
-parser.add_argument("--rz", help="rotate z axis",
+parser.add_argument("-rz", "--rotate-z", help="rotate z axis",
                     type=float, default=0)
+parser.add_argument("-th",
+                    "--thickness", help="thickness of the icon", type=float, default=1)
 parser.add_argument(
-    "--thickness", help="thickness of the icon", type=float, default=1)
-parser.add_argument(
+    "-d",
     "--distance", help="distance of the camera", type=float, default=1)
 parser.add_argument(
+    "-lx",
     "--light-x", help="x position of the light", type=float, default=0)
 parser.add_argument(
+    "-ly",
     "--light-y", help="y position of the light", type=float, default=0)
 parser.add_argument(
+    "-lz",
     "--light-z", help="z position of the light", type=float, default=0)
 parser.add_argument(
+    "-ls",
     "--light-strength", help="strength of the light", type=float, default=1)
-parser.add_argument("--r", help="red color",
+parser.add_argument("-r", "--red", help="red color",
                     type=float, default=-1)
-parser.add_argument("--g", help="green color",
+parser.add_argument("-g", "--green", help="green color",
                     type=float, default=-1)
-parser.add_argument("--b", help="blue color",
+parser.add_argument("-b", "--blue", help="blue color",
                     type=float, default=-1)
 parser.add_argument(
+    "-s",
     "--size", help="size of the image", type=int, default=2048)
 parser.add_argument(
     "--bevel", help="bevel depth of the icon", type=float, default=1
@@ -42,18 +48,18 @@ def main():
         args = parser.parse_args()
 
         filepath = args.filepath
-        rotate_x = args.rx
-        rotate_y = args.ry
-        rotate_z = args.rz
+        rotate_x = args.rotate_x
+        rotate_y = args.rotate_y
+        rotate_z = args.rotate_z
         thickness = args.thickness
         distance = args.distance
         light_x = args.light_x
         light_y = args.light_y
         light_z = args.light_z
         light_strength = args.light_strength
-        color_r = args.r
-        color_g = args.g
-        color_b = args.b
+        color_r = args.red
+        color_g = args.green
+        color_b = args.blue
         size = args.size
         bevel = args.bevel
 
