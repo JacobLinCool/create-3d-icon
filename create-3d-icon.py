@@ -4,40 +4,41 @@ import math
 import bpy
 import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument("filepath", help="path to svg file")
+parser.add_argument("--rx", help="rotate x axis",
+                    type=float, default=0)
+parser.add_argument("--ry", help="rotate y axis",
+                    type=float, default=0)
+parser.add_argument("--rz", help="rotate z axis",
+                    type=float, default=0)
+parser.add_argument(
+    "--thickness", help="thickness of the icon", type=float, default=1)
+parser.add_argument(
+    "--distance", help="distance of the camera", type=float, default=1)
+parser.add_argument(
+    "--light-x", help="x position of the light", type=float, default=0)
+parser.add_argument(
+    "--light-y", help="y position of the light", type=float, default=0)
+parser.add_argument(
+    "--light-z", help="z position of the light", type=float, default=0)
+parser.add_argument(
+    "--light-strength", help="strength of the light", type=float, default=1)
+parser.add_argument("--r", help="red color",
+                    type=float, default=-1)
+parser.add_argument("--g", help="green color",
+                    type=float, default=-1)
+parser.add_argument("--b", help="blue color",
+                    type=float, default=-1)
+parser.add_argument(
+    "--size", help="size of the image", type=int, default=2048)
+parser.add_argument(
+    "--bevel", help="bevel depth of the icon", type=float, default=1
+)
+
 
 def main():
     if len(sys.argv) > 1:
-        parser = argparse.ArgumentParser()
-        parser.add_argument("filepath", help="path to svg file")
-        parser.add_argument("--rx", help="rotate x axis",
-                            type=float, default=0)
-        parser.add_argument("--ry", help="rotate y axis",
-                            type=float, default=0)
-        parser.add_argument("--rz", help="rotate z axis",
-                            type=float, default=0)
-        parser.add_argument(
-            "--thickness", help="thickness of the icon", type=float, default=1)
-        parser.add_argument(
-            "--distance", help="distance of the camera", type=float, default=1)
-        parser.add_argument(
-            "--light-x", help="x position of the light", type=float, default=0)
-        parser.add_argument(
-            "--light-y", help="y position of the light", type=float, default=0)
-        parser.add_argument(
-            "--light-z", help="z position of the light", type=float, default=0)
-        parser.add_argument(
-            "--light-strength", help="strength of the light", type=float, default=1)
-        parser.add_argument("--r", help="red color",
-                            type=float, default=-1)
-        parser.add_argument("--g", help="green color",
-                            type=float, default=-1)
-        parser.add_argument("--b", help="blue color",
-                            type=float, default=-1)
-        parser.add_argument(
-            "--size", help="size of the image", type=int, default=2048)
-        parser.add_argument(
-            "--bevel", help="bevel depth of the icon", type=float, default=1
-        )
         args = parser.parse_args()
 
         filepath = args.filepath
@@ -74,7 +75,7 @@ def main():
             size
         )
     else:
-        print("No file path given")
+        parser.print_help()
 
 
 def capture(
