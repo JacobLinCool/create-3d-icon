@@ -7,7 +7,7 @@ This is a small cli tool to generate 3D icons using Blender.
 ## Examples
 
 ```bash
-python create-3d-icon.py examples/LogosGithubIcon.svg
+python create.py examples/LogosGithubIcon.svg
 ```
 
 |                         from                         |                          to                          |
@@ -17,7 +17,7 @@ python create-3d-icon.py examples/LogosGithubIcon.svg
 ---
 
 ```bash
-python create-3d-icon.py --light-x 1 --light-strength 2 examples/LogosBlender.svg
+python create.py --light-x 1 --light-strength 2 examples/LogosBlender.svg
 ```
 
 |                      from                      |                       to                       |
@@ -27,7 +27,7 @@ python create-3d-icon.py --light-x 1 --light-strength 2 examples/LogosBlender.sv
 ---
 
 ```bash
-python create-3d-icon.py -r 0 -g 0.1 -b 0.3 -rx 5 -rz 5 -lx 1 -lz -1 -ls 100 --th 2 -d 0.6 examples/LogosGithub.svg
+python create.py -r 0 -g 0.1 -b 0.3 -rx 5 -rz 5 -lx 1 -lz -1 -ls 100 --th 2 -d 0.6 examples/LogosGithub.svg
 ```
 
 |                     from                     |                      to                      |
