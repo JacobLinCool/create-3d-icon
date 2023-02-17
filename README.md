@@ -27,7 +27,7 @@ python create-3d-icon.py --light-x 1 --light-strength 2 examples/LogosBlender.sv
 ---
 
 ```bash
-python create-3d-icon.py --r 0 --g 0.1 --b 0.3 --rx 5 --rz 5 --light-x 1 --light-z -1 --light-strength 100 --thickness 2 --distance 0.6 examples/LogosGithub.svg
+python create-3d-icon.py -r 0 -g 0.1 -b 0.3 -rx 5 -rz 5 -lx 1 -lz -1 -ls 100 --th 2 -d 0.6 examples/LogosGithub.svg
 ```
 
 |                     from                     |                      to                      |
