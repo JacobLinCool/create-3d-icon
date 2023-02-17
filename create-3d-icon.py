@@ -35,6 +35,9 @@ def main():
                             type=float, default=-1)
         parser.add_argument(
             "--size", help="size of the image", type=int, default=2048)
+        parser.add_argument(
+            "--bevel", help="bevel depth of the icon", type=float, default=1
+        )
         args = parser.parse_args()
 
         filepath = args.filepath
@@ -51,6 +54,7 @@ def main():
         color_g = args.g
         color_b = args.b
         size = args.size
+        bevel = args.bevel
 
         capture(
             filepath,
@@ -58,6 +62,7 @@ def main():
             rotate_y,
             rotate_z,
             thickness,
+            bevel,
             distance,
             light_x,
             light_y,
@@ -78,6 +83,7 @@ def capture(
     rotate_y=0,
     rotate_z=0,
     thickness=1,
+    bevel=1,
     distance=1,
     light_x=0,
     light_y=0,
@@ -119,6 +125,7 @@ def capture(
 
     for obj in collection.objects:
         obj.data.extrude = thickness * 0.0005
+        obj.data.bevel_depth = bevel * 0.0001
         if color_r != -1 or color_g != -1 or color_b != -1:
             obj.active_material = material
 

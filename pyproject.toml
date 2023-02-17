@@ -13,6 +13,7 @@ bpy = "^3.4.0"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "^2.0.1"
+fake-bpy-module-latest = "^20230216"
 
 [build-system]
 requires = ["poetry-core"]

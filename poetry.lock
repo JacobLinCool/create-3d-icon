@@ -274,6 +274,18 @@ files = [
 ]
 
 [[package]]
+name = "fake-bpy-module-latest"
+version = "20230216"
+description = "Collection of the fake Blender Python API module for the code completion."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "fake-bpy-module-latest-20230216.tar.gz", hash = "sha256:64de4ba9010f08073c0b6649989d9272af6f7aa6f054f6c6afa09a56ef48d4eb"},
+    {file = "fake_bpy_module_latest-20230216-py3-none-any.whl", hash = "sha256:b7a031c82f0b307c3ac53662d50aaf34dc071fbec2e03066953eb4b9a52ba136"},
+]
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -468,4 +480,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.10"
-content-hash = "09186bf9ffa81dd66e1be822f63419b43b9ad99b8b93ee14eee1cd7f0a782e1e"
+content-hash = "92f2dc8f122e28a0efd3cdd652bf25c9e93c32650c8cb1eea2e1e956f3dea997"
