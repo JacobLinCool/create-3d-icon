@@ -44,8 +44,10 @@ parser.add_argument(
 
 
 def main():
-    if len(sys.argv) > 1:
-        args = parser.parse_args()
+    argv = sys.argv
+    argv = argv[argv.index("--") + 1:] if "--" in argv else argv[1:]
+    if len(argv) >= 1:
+        args = parser.parse_args(argv)
 
         filepath = args.filepath
         rotate_x = args.rotate_x
@@ -121,12 +123,12 @@ def capture(
 
     # rotate the objects
     bpy.ops.transform.rotate(value=math.pi * -0.5 +
-                             deg_to_rad(rotate_x), orient_axis='X')
-    bpy.ops.transform.rotate(value=deg_to_rad(rotate_y), orient_axis='Y')
+                             deg_to_rad(rotate_x), orient_axis="X")
+    bpy.ops.transform.rotate(value=deg_to_rad(rotate_y), orient_axis="Y")
     bpy.ops.transform.rotate(value=math.pi * -0.5 +
-                             deg_to_rad(rotate_z), orient_axis='Z')
+                             deg_to_rad(rotate_z), orient_axis="Z")
 
-    material = bpy.data.materials.new('Color')
+    material = bpy.data.materials.new("Color")
     material.diffuse_color = (
         color_r if color_r != -1 else 1, color_g if color_g != -1 else 1, color_b if color_b != -1 else 1, 1)
 
@@ -138,15 +140,15 @@ def capture(
 
     #  add light
     bpy.ops.object.light_add(
-        type='POINT', location=(light_x, light_y, light_z))
-    bpy.data.objects['Point'].data.energy = light_strength * 10
+        type="POINT", location=(light_x, light_y, light_z))
+    bpy.data.objects["Point"].data.energy = light_strength * 10
 
     #  add camera
     bpy.ops.object.camera_add(
         location=(distance * 3, 0, 0), rotation=(math.pi*0.5, 0, math.pi*0.5))
-    bpy.context.scene.camera = bpy.data.objects['Camera']
+    bpy.context.scene.camera = bpy.data.objects["Camera"]
 
-    render(filepath.replace('.svg', '.png'), size)
+    render(filepath.replace(".svg", ".png"), size)
 
     return
 
@@ -161,7 +163,7 @@ def log(any):
             print("func:", key)
 
 
-def render(out=os.path.join(os.getcwd(), 'out.png'), size=2048):
+def render(out=os.path.join(os.getcwd(), "out.png"), size=2048):
     bpy.context.scene.render.filepath = out
     bpy.context.scene.render.resolution_x = size
     bpy.context.scene.render.resolution_y = size
@@ -170,8 +172,8 @@ def render(out=os.path.join(os.getcwd(), 'out.png'), size=2048):
 
 
 def collection_dimensions(collection):
-    min_x = min_y = min_z = float('inf')
-    max_x = max_y = max_z = float('-inf')
+    min_x = min_y = min_z = float("inf")
+    max_x = max_y = max_z = float("-inf")
 
     for obj in collection.objects:
         min_x = min(min_x, obj.bound_box[0][0])
@@ -206,5 +208,5 @@ def reset():
             collections.remove(collection)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
