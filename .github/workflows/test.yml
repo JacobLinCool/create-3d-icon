@@ -35,6 +35,4 @@ jobs:
               run: poetry install
 
             - name: Run
-              run: |
-                  poetry shell
-                  python create.py examples/LogosGithubIcon.svg
+              run: poetry run python create.py examples/LogosGithubIcon.svg
