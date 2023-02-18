@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Create 3D Icon</title>
+        <style>
+            * {
+                position: relative;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+            #app {
+                height: 100%;
+                width: 100%;
+                overflow-y: auto;
+            }
+            #container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #container > div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
+            #in {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+            }
+            #out {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+            }
+            img {
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div id="container">
+                <div>
+                    <h1>Create 3D Icon</h1>
+                </div>
+
+                <div>
+                    <div id="in">
+                        <input type="file" id="file" accept="image/svg+xml" />
+                        <p id="status">Select an SVG file to create a 3D icon</p>
+                    </div>
+                    <div id="out">
+                        <img id="img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const input = document.querySelector("#file");
+            const img = document.querySelector("#img");
+            const status = document.querySelector("#status");
+
+            let running = false;
+
+            async function run() {
+                if (running) {
+                    alert("Still running");
+                    return;
+                }
+                running = true;
+                input.disabled = true;
+                status.innerText = "Creating icon ...";
+
+                try {
+                    const files = input.files;
+                    if (files.length === 0) {
+                        throw new Error("No file selected");
+                    }
+
+                    const file = files[0];
+                    const reader = new FileReader();
+                    reader.readAsText(file);
+                    const svg = await new Promise((resolve, reject) => {
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = reject;
+                    });
+
+                    const res = await fetch("/create", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            svg,
+                            size: 1024,
+                            distance: 0.8,
+                            light_x: 0.3,
+                            light_strength: 3,
+                            rotate_x: 10,
+                            rotate_z: 10,
+                        }),
+                    });
+
+                    if (!res.ok) {
+                        throw new Error("Failed to create icon");
+                    }
+
+                    const data = await res.blob();
+                    const url = URL.createObjectURL(data);
+                    img.src = url;
+                    status.innerText = "Done!";
+                } catch (err) {
+                    alert(err.message);
+                    status.innerText = "Error! " + err.message;
+                } finally {
+                    running = false;
+                    input.disabled = false;
+                }
+            }
+
+            input.addEventListener("change", run);
+        </script>
+    </body>
+</html>
