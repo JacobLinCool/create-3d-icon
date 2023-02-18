@@ -55,3 +55,15 @@ poetry install
 ```
 
 You may need to install [Blender](https://www.blender.org/download/) and add it to your path.
+
+### Docker
+
+There is a pre-built docker image (for `arm64` and `amd64`) available on [Docker Hub](https://hub.docker.com/r/jacoblincool/create-3d-icon).
+
+```bash
+docker run --rm -p 7680:7680 jacoblincool/create-3d-icon
+```
+
+You can visit `http://localhost:7680` to see the example.
+
+> There is a hosted demo on [Hugging Face Spaces](https://huggingface.co/spaces/jacoblincool/create-3d-icon)
