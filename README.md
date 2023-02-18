@@ -1,3 +1,12 @@
+---
+title: Create 3D Icon
+emoji: 🎨
+colorFrom: purple
+colorTo: gray
+sdk: docker
+app_port: 7860
+---
+
 # Create 3D Icon
 
 This is a small cli tool to generate 3D icons using Blender.
@@ -10,9 +19,9 @@ This is a small cli tool to generate 3D icons using Blender.
 python create.py examples/LogosGithubIcon.svg
 ```
 
-|                         from                         |                          to                          |
-| :--------------------------------------------------: | :--------------------------------------------------: |
-| ![LogosGithubIcon.svg](examples/LogosGithubIcon.svg) | ![LogosGithubIcon.png](examples/LogosGithubIcon.png) |
+|                         from                         |                           to                            |
+| :--------------------------------------------------: | :-----------------------------------------------------: |
+| ![LogosGithubIcon.svg](examples/LogosGithubIcon.svg) | ![LogosGithubIcon.png](https://i.imgur.com/Lgt0UNO.png) |
 
 ---
 
@@ -20,9 +29,9 @@ python create.py examples/LogosGithubIcon.svg
 python create.py --light-x 1 --light-strength 2 examples/LogosBlender.svg
 ```
 
-|                      from                      |                       to                       |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![LogosBlender.svg](examples/LogosBlender.svg) | ![LogosBlender.png](examples/LogosBlender.png) |
+|                      from                      |                          to                          |
+| :--------------------------------------------: | :--------------------------------------------------: |
+| ![LogosBlender.svg](examples/LogosBlender.svg) | ![LogosBlender.png](https://i.imgur.com/GuUWMc6.png) |
 
 ---
 
@@ -30,9 +39,9 @@ python create.py --light-x 1 --light-strength 2 examples/LogosBlender.svg
 python create.py -r 0 -g 0.1 -b 0.3 -rx 5 -rz 5 -lx 1 -lz -1 -ls 100 --th 2 -d 0.6 examples/LogosGithub.svg
 ```
 
-|                     from                     |                      to                      |
-| :------------------------------------------: | :------------------------------------------: |
-| ![LogosGithub.svg](examples/LogosGithub.svg) | ![LogosGithub.png](examples/LogosGithub.png) |
+|                     from                     |                         to                          |
+| :------------------------------------------: | :-------------------------------------------------: |
+| ![LogosGithub.svg](examples/LogosGithub.svg) | ![LogosGithub.png](https://i.imgur.com/w4yth2t.png) |
 
 > Icons are from [SVG Logos](https://github.com/gilbarbara/logos) (CC0)
 
