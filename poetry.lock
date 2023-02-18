@@ -277,7 +277,7 @@ files = [
 name = "fake-bpy-module-latest"
 version = "20230216"
 description = "Collection of the fake Blender Python API module for the code completion."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -480,4 +480,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.10"
-content-hash = "92f2dc8f122e28a0efd3cdd652bf25c9e93c32650c8cb1eea2e1e956f3dea997"
+content-hash = "126cea270b028264d4a0777428f801ed3f4578d2eb686f4c0a2eaafb9dbb0899"
