@@ -1,0 +1,14 @@
+.git
+
+.venv
+__pycache__
+
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+.github
+
+.DS_Store
+
+examples
