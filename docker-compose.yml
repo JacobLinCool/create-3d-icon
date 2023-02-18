@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    image: jacoblincool/create-3d-icon
+    ports:
+      - "7860:7860"
