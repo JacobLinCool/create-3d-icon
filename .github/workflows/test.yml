@@ -1,0 +1,38 @@
+name: Test
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    test:
+        name: Test
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+
+            # - name: Install Blender
+            #   run: |
+            #       sudo apt-get update
+            #       sudo apt-get install blender
+
+            - name: Setup Python 3.10
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.10"
+
+            - name: Install Poetry
+              uses: Gr1N/setup-poetry@v8
+
+            - name: Use Python 3.10
+              run: poetry env use 3.10
+
+            - name: Install Dependencies
+              run: poetry install
+
+            - name: Run
+              run: python create.py examples/LogosGithubIcon.svg
